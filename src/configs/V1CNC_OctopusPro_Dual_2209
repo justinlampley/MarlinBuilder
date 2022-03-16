@@ -1,0 +1,25 @@
+#!/bin/bash
+
+set -e
+
+restore_configs
+
+export V1_VERSION=${V1_VERSION}D
+
+$CFGDIR/common/v1-base-config
+$CFGDIR/common/cnc-config
+$CFGDIR/boards/octopus_pro
+$CFGDIR/accessories/dummy-extruder
+$CFGDIR/accessories/tmc2209
+$CFGDIR/accessories/reprap_discount_full_graphic_lcd
+$CFGDIR/accessories/dual-drivers-on-xy
+$CFGDIR/accessories/laser-32bit
+$CFGDIR/boards/octopus_pro_dual
+
+opt_set X_DRIVER_TYPE  "TMC2209"
+opt_set Y_DRIVER_TYPE  "TMC2209"
+opt_set Z_DRIVER_TYPE  "TMC2209"
+opt_set X2_DRIVER_TYPE  "TMC2209"
+opt_set Y2_DRIVER_TYPE  "TMC2209"
+
+export PLATFORMIO_ENV=BIGTREE_OCTOPUS_PRO_V1_F429
